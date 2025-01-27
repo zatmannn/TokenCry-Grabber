@@ -19,7 +19,7 @@
 # 📥 Installation
 
     git clone https://github.com/zatmannn/TokenCry-Grabber
-    cd tokencry-grabber
+    cd TokenCry-Grabber
     pip install -r requirements.txt
     python TokenCry.py
 
