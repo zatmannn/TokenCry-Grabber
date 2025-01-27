@@ -1,6 +1,6 @@
 # TokenCry-Grabber
 
-![Screenshot]([https://github.com/zatmannn/TokenCry-Grabber/blob/main/assets/images/Screenshot.png])
+![]([https://github.com/zatmannn/TokenCry-Grabber/blob/main/assets/images/Screenshot.png])
 
 # 📌 About
 
