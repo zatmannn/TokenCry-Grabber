@@ -1,6 +1,6 @@
 # TokenCry-Grabber
 
-![Screenshot](assets/images/screenshot.png)
+![Screenshot](assets/images/Screenshot.png)
 
 # 📌 About
 
