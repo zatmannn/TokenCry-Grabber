@@ -7,7 +7,7 @@
 **TokenCry Grabber** is a Python tool that generates a Discord token grabber script.
 
 
-# ⚠️ Warning №1
+# ⚠️ Warning
 
 **This project is for educational purposes only.**
 
@@ -22,17 +22,6 @@
     cd TokenCry-Grabber
     pip install -r requirements.txt
     python TokenCry.py
-
-
-# ⚠️ Warning №2
-
-Before running grabber script, you need to install the following Python libraries:
-
-requests
-
-pycryptodome
-
-pywin32
 
 
 # 🔧 Usage
