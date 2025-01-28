@@ -2,3 +2,4 @@ colorama
 pywin32
 pycryptodome
 requests
+urllib3
