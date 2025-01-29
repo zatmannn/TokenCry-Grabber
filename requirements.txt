@@ -3,3 +3,4 @@ pywin32
 pycryptodome
 requests
 urllib3
+pyinstaller
